@@ -43,3 +43,50 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
         Route::post('/password',                                    'ProfileController@updatePassword')->name('update-password');
     });
 });
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('events')->name('events/')->group(static function() {
+            Route::get('/',                                             'EventsController@index')->name('index');
+            Route::get('/create',                                       'EventsController@create')->name('create');
+            Route::post('/',                                            'EventsController@store')->name('store');
+            Route::get('/{event}/edit',                                 'EventsController@edit')->name('edit');
+            Route::post('/{event}',                                     'EventsController@update')->name('update');
+            Route::delete('/{event}',                                   'EventsController@destroy')->name('destroy');
+            Route::get('/export',                                       'EventsController@export')->name('export');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('teachers')->name('teachers/')->group(static function() {
+            Route::get('/',                                             'TeachersController@index')->name('index');
+            Route::get('/create',                                       'TeachersController@create')->name('create');
+            Route::post('/',                                            'TeachersController@store')->name('store');
+            Route::get('/{teacher}/edit',                               'TeachersController@edit')->name('edit');
+            Route::post('/{teacher}',                                   'TeachersController@update')->name('update');
+            Route::delete('/{teacher}',                                 'TeachersController@destroy')->name('destroy');
+            Route::get('/export',                                       'TeachersController@export')->name('export');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('courses')->name('courses/')->group(static function() {
+            Route::get('/',                                             'CoursesController@index')->name('index');
+            Route::get('/create',                                       'CoursesController@create')->name('create');
+            Route::post('/',                                            'CoursesController@store')->name('store');
+            Route::get('/{course}/edit',                                'CoursesController@edit')->name('edit');
+            Route::post('/{course}',                                    'CoursesController@update')->name('update');
+            Route::delete('/{course}',                                  'CoursesController@destroy')->name('destroy');
+            Route::get('/export',                                       'CoursesController@export')->name('export');
+        });
+    });
+});
+
+Route::get('admin/science-manager','App\Http\Controllers\Admin\PageController@scienceManager')->name('science_manager');
